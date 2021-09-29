@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_comm100/flutter_comm100.dart';
+import 'package:flutter_comm100/live_chat_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,13 +51,21 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
-      ),
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Colors.blue,
+          appBar: AppBar(
+            title: const Text('Plugin example app'),
+          ),
+          body: const Center(
+            child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: LiveChatWidget(
+                  url:
+                      'https://chatserver.comm100.com/chatwindowmobile.aspx?siteId=XXXX&planId=XXX',
+                ) //Text('Running on: $_platformVersion\n'),
+                ),
+          )),
     );
   }
 }
