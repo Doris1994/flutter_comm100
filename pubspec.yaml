@@ -30,7 +30,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.geekbuying.flutter_comm100
+        package: com.flutter.flutter_comm100
         pluginClass: FlutterComm100Plugin
       ios:
         pluginClass: FlutterComm100Plugin
