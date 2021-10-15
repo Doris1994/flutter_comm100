@@ -12,14 +12,14 @@ class ClientComm100ViewFactory(
     private val activity: Activity
 ) :
     PlatformViewFactory(StandardMessageCodec.INSTANCE) {
-    private lateinit var flutterWebView: ClientComm100View
+    private var flutterWebView: ClientComm100View ? = null
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context, viewId: Int, args: Any?): PlatformView? {
         flutterWebView = ClientComm100View(activity, messenger, viewId, args as Map<String, Any>?)
         return flutterWebView
     }
 
-    fun getFlutterWebView(): ClientComm100View {
+    fun getFlutterWebView(): ClientComm100View? {
         return flutterWebView
     }
 }

@@ -81,7 +81,7 @@ class FlutterComm100Plugin: FlutterPlugin, MethodCallHandler , ActivityAware ,Pl
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
     return if (factory != null && factory.getFlutterWebView() != null) {
-      factory.getFlutterWebView().activityResult(requestCode, resultCode, data)
+      factory.getFlutterWebView()!!.activityResult(requestCode, resultCode, data)
     } else false
   }
 
