@@ -17,9 +17,7 @@ class _LiveChatWidgetState extends State<LiveChatWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.red,
-        child: platform.build(context: context, url: widget.url));
+    return Container(child: platform.build(context: context, url: widget.url));
   }
 
   NativeViewPlatform get platform {
