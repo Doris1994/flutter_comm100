@@ -62,6 +62,22 @@
     [webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    WKWebView *webview = (WKWebView *)[self valueForKey:@"_chatWindow"];
+    if (@available(iOS 14.0, *)) {
+        [webview.configuration.userContentController removeAllScriptMessageHandlers];
+    } else {
+        [webview.configuration.userContentController removeScriptMessageHandlerForName:@"chatOnReadyHandler"];
+    }
+    [webview.configuration.userContentController removeAllUserScripts];
+    webview = nil;
+}
+
+//- (void)dealloc
+//{
+//    NSLog(@"CustomClientController dealloc!");
+//}
 @end
 
 @implementation FLNativeView{
@@ -98,7 +114,11 @@
 
 - (void)dealloc
 {
+    [visitorClient.view removeFromSuperview];
+    visitorClient = nil;
+    _view = nil;
     
+//    NSLog(@"Comm100 dealloc!");
 }
 
 
